@@ -2,7 +2,6 @@
 package generator
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 )

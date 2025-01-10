@@ -8,5 +8,5 @@ import (
 
 func CreateFunction(name string) error {
 	content := fmt.Sprintf(templates.FunctionTemplate, name)
-	return createFile(fmt.Sprintf("src/functions/%s.ts", name), content)
+	return createFile(fmt.Sprintf("src/functions/%s.py", name), content)
 }

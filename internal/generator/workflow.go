@@ -11,5 +11,5 @@ func CreateWorkflow(name string) error {
    content := fmt.Sprintf(templates.WorkflowTemplate, name, name)
    
    // Creates a new file in the src/workflows directory with the generated content
-   return createFile(fmt.Sprintf("src/workflows/%s.ts", name), content)
+   return createFile(fmt.Sprintf("src/workflows/%s.py", name), content)
 }

@@ -4,7 +4,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"path/filepath"
 	"github.com/spf13/cobra"
 	"github.com/kanlanc/restack-cli/internal/generator"
 )
@@ -43,21 +42,22 @@ func main() {
 		},
 	}
 
-	var initCmd = &cobra.Command{
-		Use:   "init [project-name]",
-		Short: "Initialize a new Restack project",
-		Args:  cobra.ExactArgs(1),
-		Run: func(cmd *cobra.Command, args []string) {
-			projectName := args[0]
-			err := generator.InitProject(projectName)
-			if err != nil {
-				fmt.Println("Error initializing project:", err)
-				os.Exit(1)
-			}
-			fmt.Printf("Project %s initialized successfully\n", projectName)
-		},
-	}
+	// var initCmd = &cobra.Command{
+	// 	Use:   "init [project-name]",
+	// 	Short: "Initialize a new Restack project",
+	// 	Args:  cobra.ExactArgs(1),
+	// 	Run: func(cmd *cobra.Command, args []string) {
+	// 		projectName := args[0]
+	// 		err := generator.InitProject(projectName)
+	// 		if err != nil {
+	// 			fmt.Println("Error initializing project:", err)
+	// 			os.Exit(1)
+	// 		}
+	// 		fmt.Printf("Project %s initialized successfully\n", projectName)
+	// 	},
+	// }
 
-	rootCmd.AddCommand(workflowCmd, functionCmd, initCmd)
+	// rootCmd.AddCommand(workflowCmd, functionCmd, initCmd)
+	rootCmd.AddCommand(workflowCmd, functionCmd)
 	rootCmd.Execute()
 }
