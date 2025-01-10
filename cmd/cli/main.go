@@ -42,6 +42,20 @@ func main() {
 		},
 	}
 
+	var toolCmd = &cobra.Command{
+		Use:   "tool [name]",
+		Short: "Add support for the [name]",
+		Args:  cobra.ExactArgs(1),
+		Run: func(cmd *cobra.Command, args []string) {
+			err := generator.CreateTool(args[0])
+			if err != nil {
+				fmt.Println("Error creating tool:", err)
+				os.Exit(1)
+			}
+			fmt.Printf("Tool %s created successfully\n", args[0])
+		},
+	}
+
 	// var initCmd = &cobra.Command{
 	// 	Use:   "init [project-name]",
 	// 	Short: "Initialize a new Restack project",
@@ -57,7 +71,7 @@ func main() {
 	// 	},
 	// }
 
-	// rootCmd.AddCommand(workflowCmd, functionCmd, initCmd)
-	rootCmd.AddCommand(workflowCmd, functionCmd)
+	// rootCmd.AddCommand(workflowCmd, functionCmd, initCmd, toolCmd)
+	rootCmd.AddCommand(workflowCmd, functionCmd, toolCmd)
 	rootCmd.Execute()
 }

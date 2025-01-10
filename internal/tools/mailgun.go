@@ -8,7 +8,7 @@ from pydantic import BaseModel
 import os
 import requests
 import json
-	
+
 # Add your imports here
 
 # Add this function in services.py file when your function is ready
@@ -78,3 +78,4 @@ async def mailgun(input: MailgunInput) -> str:
     except Exception as e:
         log.error(f"Failed to send email: {str(e)}")
         raise e
+`

@@ -1,68 +1,28 @@
 package generator
 
-// import (
-// 	"os"
-// 	"path/filepath"
-// )
+import (
+	"fmt"
+	"os"
+	"path/filepath"
+)
 
 func InitProject(projectName string) error {
 	// Create project directory structure
-	// dirs := []string{
-	// 	"src/functions",
-	// 	"src/workflows",
-	// }
+	// Clone the quickstart template repository
+	cmd := exec.Command("git", "clone", "https://github.com/kanlanc/restack-0.52-quickstart.git", projectName)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("failed to clone template repository: %v\n%s", err, output)
+	}
 
-	// files := map[string]string{
-	// 	"src/__init__.py":          "",
-	// 	"src/functions/__init__.py": "",
-	// 	"src/workflows/__init__.py":  "",
-	// 	"src/workflows/workflow.py":   getBasicWorkflowTemplate(),
-	// 	"src/functions/function.py":  getBasicFunctionTemplate(),
-	// 	"src/app.py":                  getFastAPIAppTemplate(),
-	// 	"src/client.py":               getClientTemplate(),
-	// 	"src/services.py":            getServicesTemplate(),
-	// 	// ".env":                    getEnvTemplate(),
-	// 	".env.example":            getEnvExampleTemplate(),
-	// 	".gitignore":              getGitignoreTemplate(),
-	// 	"Dockerfile":              getDockerfileTemplate(),
-	// 	// "frontend.py":             getFrontendTemplate(),
-	// 	"nginx.conf":              getNginxConfTemplate(),
-	// 	"pyproject.toml":          getPyprojectTemplate(),
-	// 	"README.md":               getReadmeTemplate(projectName),
-	// 	"schedule_workflow.py":    getScheduleWorkflowTemplate(),
-	// }
+	// Remove the .git directory to start fresh
+	err = os.RemoveAll(filepath.Join(projectName, ".git"))
+	if err != nil {
+		return fmt.Errorf("failed to remove .git directory: %v", err)
+	}
 
-	// // Create base project directory
-	// if err := os.MkdirAll(projectName, 0755); err != nil {
-	// 	return err
-	// }
-
-	// // Create directory structure
-	// for _, dir := range dirs {
-	// 	if err := os.MkdirAll(filepath.Join(projectName, dir), 0755); err != nil {
-	// 		return err
-	// 	}
-	// }
-
-	// // Create files
-	// for file, content := range files {
-	// 	if err := os.WriteFile(filepath.Join(projectName, file), []byte(content), 0644); err != nil {
-	// 		return err
-	// 	}
-	// }
-
+	fmt.Printf("Successfully initialized project '%s' from quickstart template\n", projectName)
 	return nil
 }
 
-// Add template functions below:
-// func getAppTemplate() string {
-// 	return `# Your app.py template content here
-// `
-// }
 
-// func getClientTemplate() string {
-// 	return `# Your client.py template content here
-// `
-// }
-
-// Add similar functions for other templates...
