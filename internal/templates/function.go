@@ -8,8 +8,6 @@ from pydantic import BaseModel
 
 # Add your imports here
 
-# Add this function in services.py file when your function is ready
-# to the respective service and workflow config
 
 class %sInput(BaseModel):
     # Add your input fields here
@@ -23,4 +21,39 @@ async def %s(input: %sInput):
     except Exception as error:
         log.error("%s function failed", error=error)
         raise error
+
+
+# ------------------------------------------------------------------------------------------------
+
+# Add this function in services.py file when your function is ready
+# to the respective service and workflow config
+
+# Example:
+
+# client.start_service(
+#            workflows=[<ThisWorkflowName>],
+#            functions=[<this_function_name>],
+#            options=ServiceOptions(
+#                endpoints= True,
+#                max_concurrent_function_runs=1
+#            )
+#        ),
+
+
+
+-------  or  -------
+
+# client.start_service(
+#     functions=[<this_function_name>],
+#     task_queue="<task_queue_name>", # could be whatever you prefer
+#     options=ServiceOptions(
+#         rate_limit=1,
+#         max_concurrent_function_runs=1
+#     )
+		# ),
+
+
+# ------------------------------------------------------------------------------------------------
 `
+
+

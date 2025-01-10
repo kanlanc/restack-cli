@@ -9,6 +9,23 @@ from pydantic import BaseModel
 from restack_ai.workflow import workflow, log, workflow_info, import_functions
 
 
+# ------------------------------------------------------------------------------------------------
+# Add this to your services.py file when your workflow is ready
+
+# Example:
+
+# client.start_service(
+#            workflows=[<ThisWorkflowName>],
+#            functions=[<function_name>, <function_name>, <function_name>,  <function_name>, <function_name>],
+#            options=ServiceOptions(
+#                endpoints= True,
+#                max_concurrent_function_runs=1
+#            )
+#        ),
+
+# ------------------------------------------------------------------------------------------------
+
+
 with import_functions():
     # from src.functions.<your_function_filename> import <your_function_name>
 

@@ -1,5 +1,11 @@
 I know ... I am awesome.
 
+## Next steps
+
+- [ ] Add tool support and verify if it works
+- [ ] Add more tool templates
+- [ ] Add support for init
+
 ## From source
 
 Download the source code and build the CLI.
