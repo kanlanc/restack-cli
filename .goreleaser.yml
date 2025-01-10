@@ -1,0 +1,18 @@
+# .goreleaser.yml
+builds:
+  - main: ./cmd/cli/main.go
+    binary: restack
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- .Os }}_
+      {{- .Arch }}
