@@ -7,6 +7,6 @@ import (
 )
 
 func CreateFunction(name string) error {
-	content := fmt.Sprintf(templates.FunctionTemplate, name)
+	content := fmt.Sprintf(templates.FunctionTemplate, name, name, name)
 	return createFile(fmt.Sprintf("src/functions/%s.py", name), content)
 }

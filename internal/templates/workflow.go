@@ -4,18 +4,24 @@ package templates
 const WorkflowTemplate = `
 import asyncio
 from datetime import timedelta
-
+from typing import Any
+from pydantic import BaseModel
 from restack_ai.workflow import workflow, log, workflow_info, import_functions
-from .child import ChildWorkflow
+
 
 with import_functions():
     # from src.functions.<your_function_filename> import <your_function_name>
+
+class Input(BaseModel):
+    # Add your input fields here
+    pass
+
 
 
 @workflow.defn()
 class %sWorkflow:
     @workflow.run
-    async def run(self):
+    async def run(self, input:Input):
         # Your workflow logic here
 
 		# Call your function as steps like this
