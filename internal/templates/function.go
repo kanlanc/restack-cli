@@ -41,7 +41,7 @@ async def %s(input: %sInput):
 
 
 
--------  or  -------
+# -------  or  -------
 
 # client.start_service(
 #     functions=[<this_function_name>],

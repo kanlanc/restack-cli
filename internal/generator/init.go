@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"os/exec"
 )
 
 func InitProject(projectName string) error {
