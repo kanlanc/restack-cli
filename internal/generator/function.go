@@ -6,7 +6,12 @@ import (
 	"github.com/kanlanc/restack-cli/internal/templates"
 )
 
+
+// Rename the below to CreateBasicFunction
+
 func CreateFunction(name string) error {
 	content := fmt.Sprintf(templates.FunctionTemplate, name, name, name)
 	return createFile(fmt.Sprintf("src/functions/%s.py", name), content)
 }
+
+

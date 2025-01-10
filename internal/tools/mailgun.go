@@ -5,23 +5,25 @@ const MailgunTemplate = `
 from restack_ai.function import function, log
 from typing import Any
 from pydantic import BaseModel
-
+import os
+import requests
+import json
+	
 # Add your imports here
 
 # Add this function in services.py file when your function is ready
 # to the respective service and workflow config
 
-class %sInput(BaseModel):
+class MailgunInput(BaseModel):
     to_address: str
     subject: str = ""
-    
     template: str = ""
     message: str = ""
     user_email: str = ""
     data: dict = {}
 
 @function.defn()
-async def %s(input: %sInput) -> str:
+async def mailgun(input: MailgunInput) -> str:
     """Send a single email using Mailgun API."""
     MAILGUN_API_KEY = os.getenv("MAILGUN_API_KEY")
     MAILGUN_API_URL = os.getenv("MAILGUN_API_URL")
