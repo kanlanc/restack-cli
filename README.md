@@ -23,6 +23,7 @@ go build -o restack cmd/cli/main.go
 ## Usage
 
 ```bash
+./restack init <project_name>
 ./restack workflow <name>
 ./restack function <name>
 ```
